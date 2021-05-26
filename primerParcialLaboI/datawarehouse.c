@@ -21,7 +21,7 @@ char marcasBicicleta[20][21] =
     "Trek",
     "Specialized",
     "Cannondale",
-    "Trinx",
+    "TrinxinK",
     "BMC",
     "Scott",
     "Philco",

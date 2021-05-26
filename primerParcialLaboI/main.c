@@ -9,6 +9,7 @@
 #include "servicio.h"
 #include "trabajo.h"
 #include "datawarehouse.h"
+#include "informes.h"
 
 #define CANT_TIPOS 4
 #define CANT_COLORES 5
@@ -38,8 +39,8 @@ int main()
     hardcodearTipos(tipos,CANT_TIPOS,4,&nextIdTipos);
     hardcodearColores(colores,CANT_COLORES,5,&nextIdColores);
     hardcodearServicios(servicios,CANT_SERVICIOS,4,&nextIdServicios);
-    hardcodearBicicletas(bicicletas,CANT_BICICLETAS,10,&nextIdBicicleta);
-    hardcodearTrabajos(trabajos,CANT_TRABAJOS,bicicletas,CANT_BICICLETAS,10,&nextIdTrabajo);
+    hardcodearBicicletas(bicicletas,CANT_BICICLETAS,15,&nextIdBicicleta);
+    hardcodearTrabajos(trabajos,CANT_TRABAJOS,bicicletas,CANT_BICICLETAS,15,&nextIdTrabajo);
 //******************************************************************************************
 
     do
@@ -120,8 +121,8 @@ int main()
             else
             {
                 printf("\n   Primero debe dar de alta una bicicleta\n\n");
+                system("pause");
             }
-            system("pause");
             break;
         case 9:
             mostrarTrabajos(trabajos,CANT_TRABAJOS,tipos,CANT_TIPOS,servicios,CANT_SERVICIOS,
@@ -129,6 +130,18 @@ int main()
             system("pause");
             break;
         case 10:
+            if(todoVacioBicicletas(bicicletas,CANT_BICICLETAS) == 0)
+            {
+                informes(bicicletas,CANT_BICICLETAS,tipos,CANT_TIPOS,colores,CANT_COLORES,trabajos,
+                         CANT_TRABAJOS,servicios,CANT_SERVICIOS);
+            }
+            else
+            {
+                printf("\n   Primero debe dar de alta una bicicleta\n\n");
+                system("pause");
+            }
+            break;
+        case 11:
             getChar(&salir,"Desea Salir? \ns: Si\nn: No\nRespuesta: ","Opcion invalida!!\n",2);
             break;
         }

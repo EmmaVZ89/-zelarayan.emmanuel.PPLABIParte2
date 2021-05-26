@@ -12,17 +12,18 @@ int menuPrincipal()
     system("cls");
     printf("***  Bicicleteria  ***\n\n");
     printf("Menu de opciones:\n\n");
-    printf("1. ALTA BICICLETA\n");
-    printf("2. MODIFICAR BICICLETA\n");
-    printf("3. BAJA BICICLETA\n");
-    printf("4. LISTAR BICICLETAS\n");
-    printf("5. LISTAR TIPOS\n");
-    printf("6. LISTAR COLORES\n");
-    printf("7. LISTAR SERVICIOS\n");
-    printf("8. ALTA TRABAJO\n");
-    printf("9. LISTAR TRABAJOS\n");
-    printf("10. Salir\n");
-    utn_getNumero(&opcion,"Ingrese su opcion: ","Opcion invalida!!\n\n",1,10,2);
+    printf(" 1. ALTA BICICLETA\n");
+    printf(" 2. MODIFICAR BICICLETA\n");
+    printf(" 3. BAJA BICICLETA\n");
+    printf(" 4. LISTAR BICICLETAS\n");
+    printf(" 5. LISTAR TIPOS\n");
+    printf(" 6. LISTAR COLORES\n");
+    printf(" 7. LISTAR SERVICIOS\n");
+    printf(" 8. ALTA TRABAJO\n");
+    printf(" 9. LISTAR TRABAJOS\n");
+    printf("10. INFORMES\n");
+    printf("11. SALIR\n");
+    utn_getNumero(&opcion,"Ingrese su opcion: ","Opcion invalida!!\n\n",1,11,2);
     return opcion;
 }
 
@@ -39,6 +40,7 @@ int altaBicicleta(eBicicleta bicicletas[], int tam, int* idBicicleta, eTipo tipo
     {
         system("cls");
         printf("***  Alta Juegos  ***\n\n");
+        printf("Id Bicicleta: %d\n\n",*idBicicleta);
         indice = buscarLibreBicicleta(bicicletas,tam);
         if(indice != -1)
         {
@@ -173,9 +175,9 @@ int mostrarBicicletas(eBicicleta bicicletas[], int tam, eTipo tipos[],int tamT, 
     {
         ordenarBicicletas(bicicletas,tam);
         printf("\n************  Listado de Bicicletas  ***************\n\n");
-        printf("----------------------------------------------------\n");
+        printf("-----------------------------------------------------\n");
         printf(" Id       Marca         Tipo        Color      Rodado\n");
-        printf("----------------------------------------------------\n");
+        printf("-----------------------------------------------------\n");
         for(int i = 0; i < tam; i++)
         {
             if(bicicletas[i].isEmpty == 0)
@@ -189,7 +191,7 @@ int mostrarBicicletas(eBicicleta bicicletas[], int tam, eTipo tipos[],int tamT, 
         {
             printf("   No hay bicicletas que mostrar\n");
         }
-        printf("----------------------------------------------------\n\n");
+        printf("-----------------------------------------------------\n\n");
     }
     return todoOk;
 }
@@ -366,16 +368,16 @@ int ordenarBicicletas(eBicicleta bicicletas[], int tam)
 int todoVacioBicicletas(eBicicleta bicicletas[], int tam)
 {
     int vacio = 1;
-    if(bicicletas != NULL && tam > 0) // validacion
+    if(bicicletas != NULL && tam > 0)
     {
         for(int i = 0; i < tam; i++)
         {
-            if(bicicletas[i].isEmpty == 0) // se verifica si la ubicacion esta ocupada
+            if(bicicletas[i].isEmpty == 0)
             {
-                vacio = 0; // al encontrarse una ubicacion ocupada se cambia el valor de la variable empty por 0, lo cual indica que el array no esta vacio
+                vacio = 0;
                 break;
             }
         }
     }
-    return vacio; // devuelve 1 si el array esta vacio. Devuelve 0 si el array no esta vacio.
+    return vacio;
 }
